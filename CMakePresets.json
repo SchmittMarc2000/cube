@@ -1,0 +1,41 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "windows",
+            "displayName": "Windows (default VS toolchain, multi-config)",
+            "binaryDir": "${sourceDir}/build/windows"
+        },
+        {
+            "name": "ninja",
+            "displayName": "Ninja (run from a VS developer prompt)",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/ninja",
+            "cacheVariables": { "CMAKE_BUILD_TYPE": "Release" }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "windows-debug",
+            "configurePreset": "windows",
+            "configuration": "Debug"
+        },
+        {
+            "name": "windows-release",
+            "configurePreset": "windows",
+            "configuration": "Release"
+        },
+        {
+            "name": "ninja",
+            "configurePreset": "ninja"
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "windows-release",
+            "configurePreset": "windows",
+            "configuration": "Release",
+            "output": { "outputOnFailure": true }
+        }
+    ]
+}

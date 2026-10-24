@@ -1,0 +1,17 @@
+# Normalize text files to LF in the repo, check out native on Windows.
+* text=auto
+
+# Sources and configs always LF in-repo
+*.cpp text
+*.hpp text
+*.md text
+*.cmake text
+*.yml text
+*.json text
+*.ps1 text
+
+# Binaries
+*.dll binary
+*.lib binary
+*.pdb binary
+*.exe binary

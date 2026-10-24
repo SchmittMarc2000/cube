@@ -1,0 +1,25 @@
+# Build outputs
+build/
+out/
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.vcxproj*
+*.sln
+*.user
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs / crash dumps
+*.log
+*.dmp

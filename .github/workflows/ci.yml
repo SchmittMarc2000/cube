@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch SDL3
+        shell: pwsh
+        run: ./tools/fetch_sdl3.ps1
+
+      - name: Configure
+        run: cmake --preset windows
+
+      - name: Build (Release)
+        run: cmake --build --preset windows-release
+
+      - name: Unit tests
+        run: ctest --preset windows-release
+
+      - name: Client smoke (WARP renderer, 5 frames)
+        run: ./build/windows/bin/Release/opencube.exe --frames 5 --warp
+
+      - name: Server smoke
+        run: ./build/windows/bin/Release/opencube-server.exe
